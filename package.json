@@ -2,7 +2,7 @@
   "name": "builder-react-component",
   "version": "0.0.1",
   "description": "Builder Archetype - React Component",
-  "main": "lib/index.js",
+  "repository": {
     "type": "git",
     "url": "https://github.com/FormidableLabs/builder-react-component.git"
   },
