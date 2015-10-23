@@ -30,7 +30,10 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
-        loader: "babel"
+        // **Note**: Cannot use shorthand `"babel-loader"` or `"babel"` when
+        // we are playing around with `NODE_PATH` in builder. Manually
+        // resolve path.
+        loader: require.resolve("babel-loader")
       }, {
         test: /\.css$/,
         loader: "style!css"
