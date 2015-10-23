@@ -6,19 +6,21 @@ var path = require("path");
 var _ = require("lodash");
 var prodCfg = require("./webpack.config");
 
+// Replace with `__dirname` if using in project root.
+var ROOT = process.cwd();
+
 module.exports = {
   cache: true,
-  context: "./test/client",
+  context: path.join(ROOT, "test/client"),
   entry: "./main",
   output: {
-    path: ".",
     filename: "main.js",
     publicPath: "/assets/"
   },
   resolve: _.merge({}, prodCfg.resolve, {
     alias: {
       // Allow root import of `src/FOO` from ROOT/src.
-      src: "./src"
+      src: path.join(ROOT, "src")
     }
   }),
   module: prodCfg.module,

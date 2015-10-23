@@ -3,9 +3,12 @@
 var webpack = require("webpack");
 var path = require("path");
 
+// Replace with `__dirname` if using in project root.
+var ROOT = process.cwd();
+
 module.exports = {
   cache: true,
-  entry: "./src/index.js",
+  entry: path.join(ROOT, "src/index.js"),
   externals: [
     {
       "react": {
@@ -17,7 +20,7 @@ module.exports = {
     }
   ],
   output: {
-    path: "./dist",
+    path: path.join(ROOT, "dist"),
     filename: "boilerplate-component.min.js",
     library: "BoilerplateComponent",
     libraryTarget: "umd"

@@ -6,7 +6,12 @@
  * the test files one-off for just a single run. This is appropriate for a
  * CI environment or if you're not otherwise running `npm run dev|hot`.
  */
+var path = require("path");
 var webpackCfg = require("../webpack/webpack.config.test");
+
+var MAIN_PATH = path.join(process.cwd(), "test/client/main.js");
+var PREPROCESSORS = {}
+PREPROCESSORS[MAIN_PATH] = ["webpack"];
 
 module.exports = function (config) {
   /* eslint-disable global-require */
@@ -17,15 +22,13 @@ module.exports = function (config) {
 
   // Overrides.
   config.set({
-    preprocessors: {
-      "test/client/main.js": ["webpack"]
-    },
+    preprocessors: PREPROCESSORS,
     files: [
       // Sinon has issues with webpack. Do global include.
       require.resolve("sinon/pkg/sinon"),
 
       // Test bundle (created via local webpack-dev-server in this config).
-      "test/client/main.js"
+      MAIN_PATH
     ],
     webpack: webpackCfg,
     webpackServer: {
