@@ -22,7 +22,7 @@ module.exports = function (config) {
     },
     files: [
       // Sinon has issues with webpack. Do global include.
-      "node_modules/sinon/pkg/sinon.js",
+      require.resolve("sinon/pkg/sinon"),
 
       // Test bundle (created via local webpack-dev-server in this config).
       "test/client/main.js"

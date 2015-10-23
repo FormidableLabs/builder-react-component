@@ -15,7 +15,7 @@ module.exports = function (config) {
     basePath: ".", // repository root.
     files: [
       // Sinon has issues with webpack. Do global include.
-      "node_modules/sinon/pkg/sinon.js",
+      require.resolve("sinon/pkg/sinon"),
 
       // Test bundle (must be created via `npm run dev|hot|server-test`)
       "http://127.0.0.1:3001/assets/main.js"
