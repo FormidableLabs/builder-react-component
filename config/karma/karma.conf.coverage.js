@@ -4,7 +4,11 @@
  *
  * This configuration is the same as basic one-shot version, just with coverage.
  */
+var path = require("path");
 var webpackCovCfg = require("../webpack/webpack.config.coverage");
+
+// Replace with `__dirname` if using in project root.
+var ROOT = process.cwd();
 
 module.exports = function (config) {
   /* eslint-disable global-require */
@@ -18,7 +22,7 @@ module.exports = function (config) {
         { type: "lcov" },
         { type: "text-summary" }
       ],
-      dir: "coverage/client"
+      dir: path.join(ROOT, "coverage/client")
     }
   });
 };
