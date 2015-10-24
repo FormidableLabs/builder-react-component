@@ -13,7 +13,7 @@ module.exports = _.merge({}, testCfg, {
       {
         test: /src\/.*\.jsx?$/,
         exclude: /(test|node_modules)\//,
-        loader: "isparta"
+        loader: require.resolve("isparta-loader")
       }
     ]
   }
