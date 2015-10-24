@@ -48,7 +48,10 @@
     "check": "builder run lint && builder run test",
     "check-ci": "builder run lint && builder run test-ci",
     "check-cov": "builder run lint && builder run test-cov",
-    "check-dev": "builder run lint && builder run test-dev"
+    "check-dev": "builder run lint && builder run test-dev",
+    "builder:lint-server": "eslint --color -c config/eslint/.eslintrc-server config/karma config/webpack",
+    "builder:lint": "npm run builder:lint-server",
+    "builder:check": "npm run builder:lint"
   },
   "dependencies": {
     "babel": "^5.8.21",
