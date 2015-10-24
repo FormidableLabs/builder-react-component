@@ -38,10 +38,10 @@ module.exports = {
         loader: require.resolve("babel-loader")
       }, {
         test: /\.css$/,
-        loader: "style!css"
+        loader: require.resolve("style-loader") + "!css"
       }, {
         test: /\.(png|jpg)$/,
-        loader: "url?limit=8192"
+        loader: require.resolve("url-loader") + "?limit=8192"
       }
     ]
   },
