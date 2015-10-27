@@ -15,9 +15,3 @@ build
 */build
 coverage
 Procfile
-
-# NPM
-test
-.eslint*
-.istanbul*
-.travis*
