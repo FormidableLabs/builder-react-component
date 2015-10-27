@@ -31,133 +31,126 @@ An example project using this structure is:
 ## Tasks
 
 ```
-$ builder help
+$ builder help builder-react-component
+[builder:help]
+
 Usage:
 
   builder [action] [task]
 
 Actions:
 
-  run, help, concurrent
+  help, run, concurrent, install
 
 Tasks:
 
   npm:postinstall
-    node -e "require('fs').stat('lib', function(e,s){process.exit(e || !s.isDirectory() ? 1 : 0)})" || builder run build-lib
+    [builder-react-component] node -e "require('fs').stat('lib', function(e,s){process.exit(e || !s.isDirectory() ? 1 : 0)})" || builder run build-lib
 
   npm:preversion
-    builder run check
-
-  npm:version
-    builder run clean && builder run build && git add -A dist
+    [builder-react-component] builder run check
 
   npm:test
-    builder run test-frontend
+    [builder-react-component] builder run test-frontend
 
-  clean-dist
-    rimraf dist
-
-  build-dist-min
-    webpack --config node_modules/builder-react-component/config/webpack/webpack.config.js
-
-  build-dist-dev
-    webpack --config node_modules/builder-react-component/config/webpack/webpack.config.dev.js
-
-  build-dist
-    builder run clean-dist && builder run build-dist-min && builder run build-dist-dev
-
-  clean-lib
-    rimraf lib
-
-  build-lib
-    builder run clean-lib && babel --babelrc node_modules/builder-react-component/config/babel/.babelrc src -d lib
-
-  clean
-    builder run clean-lib && builder run clean-dist
+  npm:version
+    [builder-react-component] builder run clean && builder run build && git add -A dist
 
   build
-    builder run build-lib && builder run build-dist
+    [builder-react-component] builder run build-lib && builder run build-dist
 
-  server-dev
-    webpack-dev-server --port 3000 --config  node_modules/builder-react-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo
+  build-dist
+    [builder-react-component] builder run clean-dist && builder run build-dist-min && builder run build-dist-dev
 
-  server-hot
-    webpack-dev-server --port 3000 --config  node_modules/builder-react-component/config/webpack/demo/webpack.config.hot.js --colors --hot --content-base demo
+  build-dist-dev
+    [builder-react-component] webpack --config node_modules/builder-react-component/config/webpack/webpack.config.dev.js
 
-  server-test
-    webpack-dev-server --port 3001 --config node_modules/builder-react-component/config/webpack/webpack.config.test.js --colors
+  build-dist-min
+    [builder-react-component] webpack --config node_modules/builder-react-component/config/webpack/webpack.config.js
 
-  dev
-    builder concurrent server-dev server-test
-
-  hot
-    builder concurrent server-hot server-test
-
-  open-demo
-    opener http://127.0.0.1:3000
-
-  open-dev
-    builder concurrent dev open-demo
-
-  open-hot
-    builder concurrent hot open-demo
-
-  lint-server
-    eslint --color -c node_modules/builder-react-component/config/eslint/.eslintrc-server *.js
-
-  lint-client
-    eslint --color --ext .js,.jsx -c node_modules/builder-react-component/config/eslint/.eslintrc-client src demo/*.jsx
-
-  lint-client-test
-    eslint --color --ext .js,.jsx -c node_modules/builder-react-component/config/eslint/.eslintrc-client-test src test/client
-
-  lint
-    builder concurrent lint-server lint-client lint-client-test
-
-  test-frontend
-    node node_modules/builder-react-component/node_modules/karma/bin/karma start node_modules/builder-react-component/config/karma/karma.conf.js
-
-  test-frontend-ci
-    node node_modules/builder-react-component/node_modules/karma/bin/karma start --browsers PhantomJS,Firefox node_modules/builder-react-component/config/karma/karma.conf.coverage.js
-
-  test-frontend-cov
-    node node_modules/builder-react-component/node_modules/karma/bin/karma start node_modules/builder-react-component/config/karma/karma.conf.coverage.js
-
-  test-frontend-dev
-    node node_modules/builder-react-component/node_modules/karma/bin/karma start node_modules/builder-react-component/config/karma/karma.conf.dev.js
-
-  test
-    builder run npm:test
-
-  test-ci
-    builder run test-frontend-ci
-
-  test-cov
-    builder run test-frontend-cov
-
-  test-dev
-    builder run test-frontend-dev
+  build-lib
+    [builder-react-component] builder run clean-lib && babel --babelrc node_modules/builder-react-component/config/babel/.babelrc src -d lib
 
   check
-    builder run lint && builder run test
+    [builder-react-component] builder run lint && builder run test
 
   check-ci
-    builder run lint && builder run test-ci
+    [builder-react-component] builder run lint && builder run test-ci
 
   check-cov
-    builder run lint && builder run test-cov
+    [builder-react-component] builder run lint && builder run test-cov
 
   check-dev
-    builder run lint && builder run test-dev
+    [builder-react-component] builder run lint && builder run test-dev
 
-  postinstall
-    builder run npm:postinstall
+  clean
+    [builder-react-component] builder run clean-lib && builder run clean-dist
 
-  preversion
-    builder run npm:preversion
+  clean-dist
+    [builder-react-component] rimraf dist
 
-  version
-    builder run npm:version
+  clean-lib
+    [builder-react-component] rimraf lib
+
+  dev
+    [builder-react-component] builder concurrent server-dev server-test
+
+  hot
+    [builder-react-component] builder concurrent server-hot server-test
+
+  lint
+    [builder-react-component] builder concurrent lint-server lint-client lint-client-test
+
+  lint-client
+    [builder-react-component] eslint --color --ext .js,.jsx -c node_modules/builder-react-component/config/eslint/.eslintrc-client src demo/*.jsx
+
+  lint-client-test
+    [builder-react-component] eslint --color --ext .js,.jsx -c node_modules/builder-react-component/config/eslint/.eslintrc-client-test src test/client
+
+  lint-server
+    [builder-react-component] eslint --color -c node_modules/builder-react-component/config/eslint/.eslintrc-server *.js
+
+  open-demo
+    [builder-react-component] opener http://127.0.0.1:3000
+
+  open-dev
+    [builder-react-component] builder concurrent dev open-demo
+
+  open-hot
+    [builder-react-component] builder concurrent hot open-demo
+
+  server-dev
+    [builder-react-component] webpack-dev-server --port 3000 --config  node_modules/builder-react-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo
+
+  server-hot
+    [builder-react-component] webpack-dev-server --port 3000 --config  node_modules/builder-react-component/config/webpack/demo/webpack.config.hot.js --colors --hot --content-base demo
+
+  server-test
+    [builder-react-component] webpack-dev-server --port 3001 --config node_modules/builder-react-component/config/webpack/webpack.config.test.js --colors
+
+  test
+    [builder-react-component] builder run npm:test
+
+  test-ci
+    [builder-react-component] builder run test-frontend-ci
+
+  test-cov
+    [builder-react-component] builder run test-frontend-cov
+
+  test-dev
+    [builder-react-component] builder run test-frontend-dev
+
+  test-frontend
+    [builder-react-component] node node_modules/builder-react-component/node_modules/karma/bin/karma start node_modules/builder-react-component/config/karma/karma.conf.js
+
+  test-frontend-ci
+    [builder-react-component] node node_modules/builder-react-component/node_modules/karma/bin/karma start --browsers PhantomJS,Firefox node_modules/builder-react-component/config/karma/karma.conf.coverage.js
+
+  test-frontend-cov
+    [builder-react-component] node node_modules/builder-react-component/node_modules/karma/bin/karma start node_modules/builder-react-component/config/karma/karma.conf.coverage.js
+
+  test-frontend-dev
+    [builder-react-component] node node_modules/builder-react-component/node_modules/karma/bin/karma start node_modules/builder-react-component/config/karma/karma.conf.dev.js
 ```
 
 [builder]: https://github.com/FormidableLabs/builder
