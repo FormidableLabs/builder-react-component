@@ -14,10 +14,14 @@ demo/
   app.jsx
   index.html
 src
+  components/
+    *.jsx
   index.js
 test
   client/
     spec/
+      components/
+        *.jsx?
       *.jsx?
     main.js
     test.html
