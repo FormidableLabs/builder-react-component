@@ -29,6 +29,27 @@ test
 package.json
 ```
 
+The `src/index.js` file should have exactly **one** property that exports the
+correct camel-cased component name like:
+
+```js
+module.exports = {
+  MyComponentName: require("./components/my-component-name")
+};
+```
+
+The archetype will infer from that that the window variable name to export
+is `window.MyComponentName` and the distribution files to output are:
+
+```
+dist/my-component-name.js
+dist/my-component-name.js.map
+dist/my-component-name.min.js
+dist/my-component-name.min.js.map
+```
+
+by kebab-casing `MyComponentName`.
+
 An example project using this structure is:
 [formidable-react-component-boilerplate][]
 
