@@ -1,14 +1,32 @@
 "use strict";
 
-var webpack = require("webpack");
 var path = require("path");
+var _ = require("lodash");
+var webpack = require("webpack");
 
 // Replace with `__dirname` if using in project root.
 var ROOT = process.cwd();
+var ENTRY_JS = path.join(ROOT, "src/index.js");
+
+// **Little Hacky**: Infer the filename and library name from the code itelf.
+//
+// Assumptions:
+// - `src/index` has exactly one key.
+// - The name of that key is the `CamelCase` class name we want to export.
+// - The `kebab-case`'d name is the desired output file name.
+//
+require("babel-core/register");
+var lib = require(ENTRY_JS);
+var libKeys = Object.keys(lib);
+if (libKeys.length !== 1) {
+  throw new Error("Need exactly one exported component key");
+}
+var libName = libKeys[0];
+var libPath = _.kebabCase(libName);
 
 module.exports = {
   cache: true,
-  entry: path.join(ROOT, "src/index.js"),
+  entry: ENTRY_JS,
   externals: [
     {
       "react": {
@@ -21,8 +39,8 @@ module.exports = {
   ],
   output: {
     path: path.join(ROOT, "dist"),
-    filename: "boilerplate-component.min.js",
-    library: "BoilerplateComponent",
+    filename: libPath + ".min.js",
+    library: libName,
     libraryTarget: "umd"
   },
   resolve: {

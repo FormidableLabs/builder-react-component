@@ -5,7 +5,7 @@ var config = require("./webpack.config");
 
 // **WARNING**: Mutates base configuration.
 // We do this because lodash isn't available in `production` mode.
-config.output.filename = "boilerplate-component.js";
+config.output.filename = config.output.filename.replace(/\.min\.js$/, ".js");
 config.plugins = [
   new webpack.SourceMapDevToolPlugin("[file].map")
 ];
