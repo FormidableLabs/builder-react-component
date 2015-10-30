@@ -2,7 +2,7 @@
 /**
  * Webpack frontend test (w/ coverage) configuration.
  */
-var _ = require("lodash");
+var _ = require("lodash"); // devDependency
 var testCfg = require("./webpack.config.test");
 
 module.exports = _.merge({}, testCfg, {

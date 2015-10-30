@@ -1,32 +1,30 @@
 "use strict";
 
 var path = require("path");
-var _ = require("lodash");
 var webpack = require("webpack");
 
 // Replace with `__dirname` if using in project root.
 var ROOT = process.cwd();
-var ENTRY_JS = path.join(ROOT, "src/index.js");
 
-// **Little Hacky**: Infer the filename and library name from the code itelf.
+// **Little Hacky**: Infer the filename and library name from the package name.
 //
 // Assumptions:
-// - `src/index` has exactly one key.
-// - The name of that key is the `CamelCase` class name we want to export.
-// - The `kebab-case`'d name is the desired output file name.
-//
-require("babel-core/register");
-var lib = require(ENTRY_JS);
-var libKeys = Object.keys(lib);
-if (libKeys.length !== 1) {
-  throw new Error("Need exactly one exported component key");
-}
-var libName = libKeys[0];
-var libPath = _.kebabCase(libName);
+// - `package.json`'s `name` field is name of dist files.
+// - PascalCased version of that name is exported class name.
+var PKG = require(path.join(ROOT, "package.json"));
+var libPath = (PKG.name || "").toLowerCase();
+if (!libPath) { throw new Error("Need package.json:name field"); }
+// PascalCase (with first character capitalized).
+var libName = libPath
+  .replace(/^\s+|\s+$/g, "")
+  .replace(/(^|[-_ ])+(.)/g, function (match, first, second) {
+    // Second match group is the character we want to change. Throw away first.
+    return second.toUpperCase();
+  });
 
 module.exports = {
   cache: true,
-  entry: ENTRY_JS,
+  entry: path.join(ROOT, "src/index.js"),
   externals: [
     {
       "react": {
