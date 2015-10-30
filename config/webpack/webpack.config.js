@@ -10,11 +10,11 @@ var ROOT = process.cwd();
 //
 // Assumptions:
 // - `package.json`'s `name` field is name of dist files.
-// - Camel-cased version of that name is exported class name.
+// - PascalCased version of that name is exported class name.
 var PKG = require(path.join(ROOT, "package.json"));
 var libPath = (PKG.name || "").toLowerCase();
 if (!libPath) { throw new Error("Need package.json:name field"); }
-// CamelCase, with first character capitalized.
+// PascalCase (with first character capitalized).
 var libName = libPath
   .replace(/^\s+|\s+$/g, "")
   .replace(/(^|[-_ ])+(.)/g, function (match, first, second) {

@@ -33,7 +33,7 @@ The `name` field in `package.json` (the published `npm` package name) is
 assumed to be:
 
 1. The desired file name of the distribution files and dash-cased.
-2. The desired default exported class name when converted to camel-cased.
+2. The desired default exported class name when converted to PascalCase.
 
 So, if a `package.json` has:
 
