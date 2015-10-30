@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.0.3
+
+* Infer component name off `package.json:name` instead of `src/index.js`.
+
 ## 0.0.2
 
 * Fix dependency bug.
