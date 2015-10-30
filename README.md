@@ -29,26 +29,30 @@ test
 package.json
 ```
 
-The `src/index.js` file should have exactly **one** property that exports the
-correct camel-cased component name like:
+The `name` field in `package.json` (the published `npm` package name) is
+assumed to be:
+
+1. The desired file name of the distribution files and dash-cased.
+2. The desired default exported class name when converted to camel-cased.
+
+So, if a `package.json` has:
 
 ```js
-module.exports = {
-  MyComponentName: require("./components/my-component-name")
-};
+{
+  "name": "my-cool-component"
+}
 ```
 
-The archetype will infer from that that the window variable name to export
-is `window.MyComponentName` and the distribution files to output are:
+The distribution files to output are:
 
 ```
-dist/my-component-name.js
-dist/my-component-name.js.map
-dist/my-component-name.min.js
-dist/my-component-name.min.js.map
+dist/my-cool-component.js
+dist/my-cool-component.js.map
+dist/my-cool-component.min.js
+dist/my-cool-component.min.js.map
 ```
 
-by kebab-casing `MyComponentName`.
+and the exported class name is `MyCoolComponent`.
 
 An example project using this structure is:
 [formidable-react-component-boilerplate][]
