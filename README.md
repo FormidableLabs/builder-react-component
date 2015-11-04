@@ -98,7 +98,7 @@ Tasks:
     [builder-react-component] webpack --config node_modules/builder-react-component/config/webpack/webpack.config.js
 
   build-lib
-    [builder-react-component] builder run clean-lib && babel --babelrc node_modules/builder-react-component/config/babel/.babelrc src -d lib
+    [builder-react-component] builder run clean-lib && babel src -d lib
 
   check
     [builder-react-component] builder run lint && builder run test
