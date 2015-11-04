@@ -57,6 +57,13 @@ and the exported class name is `MyCoolComponent`.
 An example project using this structure is:
 [formidable-react-component-boilerplate][]
 
+## Usage Notes
+
+This archetype does not currently specify its own `.babelrc`. Your project
+should specify its own in the root directory if you want non-default Babel
+settings (like using stage 0, for instance). See [the recommended
+settings](config/babel/.babelrc).
+
 ## Tasks
 
 ```
@@ -98,7 +105,7 @@ Tasks:
     [builder-react-component] webpack --config node_modules/builder-react-component/config/webpack/webpack.config.js
 
   build-lib
-    [builder-react-component] builder run clean-lib && babel --babelrc node_modules/builder-react-component/config/babel/.babelrc src -d lib
+    [builder-react-component] builder run clean-lib && babel src -d lib
 
   check
     [builder-react-component] builder run lint && builder run test
