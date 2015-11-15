@@ -3,6 +3,18 @@ Contributing
 
 Thanks for helping out!
 
+## Dependencies
+
+We have a three-way dependency scheme:
+
+* `package.json:dependencies`: Production dependencies for the archetype
+  installed in a project.
+* `dev/package.json:dependencies`: Development dependencies for the archetype
+  installed in a project.
+* `package.json:devDependencies`: The development dependencies used _internally_
+  for the this archetype during development (self tests, checks, etc.) that
+  are **not** part of the overall archeype outside workflow.
+
 ## Checks, Tests
 
 Run `npm run builder:check`
