@@ -26,4 +26,5 @@ before_install:
   - 'if [ "$NPM_3" = true ]; then npm install -g npm@3; else true; fi'
 
 script:
+  - npm --version
   - npm run builder:check
