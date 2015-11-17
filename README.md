@@ -5,6 +5,16 @@ Builder Archetype: React Component
 
 A React component archetype for [builder][].
 
+## Installation
+
+To use the production and development workflows, install both this package
+and the development module:
+
+```sh
+$ npm install --save builder-react-component
+$ npm install --save-dev builder-react-component-dev
+```
+
 ## Project Structure
 
 This archetype assumes an architecture as follows:

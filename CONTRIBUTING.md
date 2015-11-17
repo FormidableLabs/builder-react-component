@@ -3,6 +3,18 @@ Contributing
 
 Thanks for helping out!
 
+## Dependencies
+
+We have a three-way dependency scheme:
+
+* `package.json:dependencies`: Production dependencies for the archetype
+  installed in a project.
+* `dev/package.json:dependencies`: Development dependencies for the archetype
+  installed in a project.
+* `package.json:devDependencies`: The development dependencies used _internally_
+  for the this archetype during development (self tests, checks, etc.) that
+  are **not** part of the overall archeype outside workflow.
+
 ## Checks, Tests
 
 Run `npm run builder:check`
@@ -16,3 +28,24 @@ $ builder help builder-react-component
 ```
 
 in any project where this archetype is installed and paste in the output.
+
+## Release
+
+For tagged official releases _only_, make sure to:
+
+1. Update appropriate `HISTORY.md` notes
+2. Bump `package.json` version
+3. Generate a new `ARCHETYPE-dev` `package.json`
+4. Add to git, tag, and publish
+
+```sh
+$ vim HISTORY.md              # Version notes
+$ vim package.json            # Bump version
+$ npm run builder:prepublish  # Generate `dev/package.json`
+$ git add package.json dev
+$ git commit -m "Version bump"
+$ git tag -a "vNUMBER" -m "Version NUMBER"
+$ git push && git push --tags
+$ npm publish                 # Publish main project
+$ cd dev && npm publish       # Publish dev project
+```
