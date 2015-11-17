@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.1.0
+
+* Switch to `ARCHETYPE` + `ARCHETYPE-dev` model for dependencies.
+
 ## 0.0.4
 
 * Switch to project root `.babelrc` instead of from archetype until #13
