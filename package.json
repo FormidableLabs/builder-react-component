@@ -52,7 +52,8 @@
     "builder:lint-server": "eslint --color -c config/eslint/.eslintrc-server config/karma config/webpack",
     "builder:lint": "npm run builder:lint-server",
     "builder:check": "npm run builder:lint",
-    "builder:prepublish": "node util/dev.js"
+    "builder:prepublish": "node util/dev.js",
+    "postinstall": "node scripts/copy-builderrc.js"
   },
   "dependencies": {
     "babel": "^5.8.21",
