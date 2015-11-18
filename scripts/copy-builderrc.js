@@ -5,7 +5,6 @@ var fs = require("fs");
 var path = require("path");
 
 /* Paths */
-console.log(process);
 var builderrcSrc = path.join(__dirname, "..", ".builderrc");
 var builderrcTarget = path.join(process.cwd(), "../..", ".builderrc");
 
