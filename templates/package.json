@@ -1,0 +1,35 @@
+{
+  "name": "<%= projectNpmName %>",
+  "version": "0.1.0",
+  "description": "<%= projectNpmDescription %>",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<%= orgGitHubName %>/<%= projectNpmName %>.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/<%= orgGitHubName %>/<%= projectNpmName %>/issues"
+  },
+  "homepage": "https://github.com/<%= orgGitHubName %>/<%= projectNpmName %>",
+  "scripts": {
+    "postinstall": "builder run npm:postinstall",
+    "preversion": "builder run npm:preversion",
+    "version": "builder run npm:version",
+    "test": "builder run npm:test"
+  },
+  "dependencies": {
+    "builder": "^2.1.0",
+    "builder-react-component": "^0.1.0"
+  },
+  "devDependencies": {
+    "builder-react-component-dev": "^0.1.0",
+    "chai": "^3.2.0",
+    "mocha": "^2.3.3",
+    "react": "^0.14.0",
+    "react-addons-test-utils": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "sinon": "^1.17.2",
+    "sinon-chai": "^2.8.0"
+  }
+}
