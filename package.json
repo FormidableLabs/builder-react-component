@@ -22,7 +22,7 @@
     "build-dist-dev": "webpack --config node_modules/builder-react-component/config/webpack/webpack.config.dev.js --colors",
     "build-dist": "builder run clean-dist && builder run build-dist-min && builder run build-dist-dev",
     "clean-lib": "rimraf lib",
-    "build-lib": "builder run clean-lib && babel src -d lib",
+    "build-lib": "builder run clean-lib && babel src -d lib --copy-files",
     "clean": "builder run clean-lib && builder run clean-dist",
     "build": "builder run build-lib && builder run build-dist",
     "server-dev": "webpack-dev-server --port 3000 --config node_modules/builder-react-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo",
