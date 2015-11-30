@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.1.1
+
+* Copy non-JS files in babel build step. ( [@hartmamt][] )
+
 ## 0.1.0
 
 * Switch to `ARCHETYPE` + `ARCHETYPE-dev` model for dependencies.
@@ -23,4 +27,5 @@ History
 * Initial release.
 
 [@exogen]: https://github.com/exogen
+[@hartmamt]: https://github.com/hartmamt
 [@ryan-roemer]: https://github.com/ryan-roemer

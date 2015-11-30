@@ -43,7 +43,7 @@ $ vim HISTORY.md              # Version notes
 $ vim package.json            # Bump version
 $ npm run builder:prepublish  # Generate `dev/package.json`
 $ npm run builder:check       # Last check!
-$ git add package.json dev
+$ git add package.json dev HISTORY.md
 $ git commit -m "Version bump"
 $ git tag -a "vNUMBER" -m "Version NUMBER"
 $ git push && git push --tags
