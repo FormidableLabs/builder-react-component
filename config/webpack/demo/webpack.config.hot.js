@@ -5,14 +5,15 @@ var base = require("./webpack.config.dev");
 
 // Clone our own module object.
 var mod = _.cloneDeep(base.module);
+var firstLoader = mod.loaders[0];
 
 // Update loaders array. First loader needs react-hot-loader.
-mod.loaders[0].loaders = [require.resolve("react-hot-loader")]
-  .concat(mod.loaders[0].loader ? [mod.loaders[0].loader] : [])
-  .concat(mod.loaders[0].loaders || []);
+firstLoader.loaders = [require.resolve("react-hot-loader")]
+  .concat(firstLoader.loader ? [firstLoader.loader] : [])
+  .concat(firstLoader.loaders || []);
 
 // Remove single loader if any.
-mod.loaders[0].loader = null;
+firstLoader.loader = null;
 
 module.exports = _.merge({}, _.omit(base, "entry", "module"), {
   entry: {
