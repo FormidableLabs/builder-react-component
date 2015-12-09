@@ -3,12 +3,17 @@
 var _ = require("lodash"); // devDependency
 var base = require("./webpack.config.dev");
 
-// Update our own module version.
+// Clone our own module object.
 var mod = _.cloneDeep(base.module);
-// First loader needs react hot.
-mod.loaders[0].loaders = [
-  require.resolve("react-hot-loader")
-].concat(mod.loaders[0].loaders);
+var firstLoader = mod.loaders[0];
+
+// Update loaders array. First loader needs react-hot-loader.
+firstLoader.loaders = [require.resolve("react-hot-loader")]
+  .concat(firstLoader.loader ? [firstLoader.loader] : [])
+  .concat(firstLoader.loaders || []);
+
+// Remove single loader if any.
+firstLoader.loader = null;
 
 module.exports = _.merge({}, _.omit(base, "entry", "module"), {
   entry: {
