@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.1.2
+
+* Fix demo hot loader webpack configuration. ( [@coopy][] )
+
 ## 0.1.1
 
 * Copy non-JS files in babel build step. ( [@hartmamt][] )
@@ -11,8 +15,8 @@ History
 
 ## 0.0.4
 
-* Switch to project root `.babelrc` instead of from archetype until #13
-  is fixed. ( [@exogen][] )
+* Switch to project root `.babelrc` instead of from archetype until fixed
+  upstream. ( [@exogen][] )
 
 ## 0.0.3
 
@@ -26,6 +30,7 @@ History
 
 * Initial release.
 
+[@coopy]: https://github.com/coopy
 [@exogen]: https://github.com/exogen
 [@hartmamt]: https://github.com/hartmamt
 [@ryan-roemer]: https://github.com/ryan-roemer
