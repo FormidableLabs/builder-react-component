@@ -55,7 +55,7 @@ module.exports = {
         loader: require.resolve("babel-loader")
       }, {
         test: /\.css$/,
-        loader: require.resolve("style-loader") + "!css"
+        loader: require.resolve("style-loader") + "!" + require.resolve("css")
       }, {
         test: /\.(png|jpg)$/,
         loader: require.resolve("url-loader") + "?limit=8192"
