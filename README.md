@@ -78,15 +78,18 @@ settings](config/babel/.babelrc).
 
 ```
 $ builder help builder-react-component
-[builder:help]
 
 Usage:
 
-  builder [action] [task]
+  builder builder-react-component <action> <task(s)>
 
 Actions:
 
-  help, run, concurrent, install
+  help, run, concurrent, envs
+
+Flags: General
+
+  --builderrc: Path to builder config file (default: `.builderrc`)
 
 Tasks:
 
@@ -109,13 +112,13 @@ Tasks:
     [builder-react-component] builder run clean-dist && builder run build-dist-min && builder run build-dist-dev
 
   build-dist-dev
-    [builder-react-component] webpack --config node_modules/builder-react-component/config/webpack/webpack.config.dev.js
+    [builder-react-component] webpack --config node_modules/builder-react-component/config/webpack/webpack.config.dev.js --colors
 
   build-dist-min
-    [builder-react-component] webpack --config node_modules/builder-react-component/config/webpack/webpack.config.js
+    [builder-react-component] webpack --config node_modules/builder-react-component/config/webpack/webpack.config.js --colors
 
   build-lib
-    [builder-react-component] builder run clean-lib && babel src -d lib
+    [builder-react-component] builder run clean-lib && babel src -d lib --copy-files
 
   check
     [builder-react-component] builder run lint && builder run test
@@ -166,10 +169,10 @@ Tasks:
     [builder-react-component] builder concurrent hot open-demo
 
   server-dev
-    [builder-react-component] webpack-dev-server --port 3000 --config  node_modules/builder-react-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo
+    [builder-react-component] webpack-dev-server --port 3000 --config node_modules/builder-react-component/config/webpack/demo/webpack.config.dev.js --colors --content-base demo
 
   server-hot
-    [builder-react-component] webpack-dev-server --port 3000 --config  node_modules/builder-react-component/config/webpack/demo/webpack.config.hot.js --colors --hot --content-base demo
+    [builder-react-component] webpack-dev-server --port 3000 --config node_modules/builder-react-component/config/webpack/demo/webpack.config.hot.js --colors --hot --content-base demo
 
   server-test
     [builder-react-component] webpack-dev-server --port 3001 --config node_modules/builder-react-component/config/webpack/webpack.config.test.js --colors
@@ -187,16 +190,16 @@ Tasks:
     [builder-react-component] builder run test-frontend-dev
 
   test-frontend
-    [builder-react-component] node node_modules/builder-react-component/node_modules/karma/bin/karma start node_modules/builder-react-component/config/karma/karma.conf.js
+    [builder-react-component] karma start node_modules/builder-react-component/config/karma/karma.conf.js
 
   test-frontend-ci
-    [builder-react-component] node node_modules/builder-react-component/node_modules/karma/bin/karma start --browsers PhantomJS,Firefox node_modules/builder-react-component/config/karma/karma.conf.coverage.js
+    [builder-react-component] karma start --browsers PhantomJS,Firefox node_modules/builder-react-component/config/karma/karma.conf.coverage.js
 
   test-frontend-cov
-    [builder-react-component] node node_modules/builder-react-component/node_modules/karma/bin/karma start node_modules/builder-react-component/config/karma/karma.conf.coverage.js
+    [builder-react-component] karma start node_modules/builder-react-component/config/karma/karma.conf.coverage.js
 
   test-frontend-dev
-    [builder-react-component] node node_modules/builder-react-component/node_modules/karma/bin/karma start node_modules/builder-react-component/config/karma/karma.conf.dev.js
+    [builder-react-component] karma start node_modules/builder-react-component/config/karma/karma.conf.dev.js
 ```
 
 [builder]: https://github.com/FormidableLabs/builder
