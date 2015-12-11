@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/FormidableLabs/builder-react-component",
   "scripts": {
-    "npm:postinstall": "node -e \"require('fs').stat('lib', function(e,s){process.exit(e || !s.isDirectory() ? 1 : 0)})\" || builder run build-lib",
+    "npm:postinstall": "cd lib || builder run build-lib",
     "npm:preversion": "builder run check",
     "npm:version": "builder run clean && builder run build && git add -A dist",
     "npm:test": "builder run test-frontend",
@@ -51,8 +51,7 @@
     "check-dev": "builder run lint && builder run test-dev",
     "builder:lint-server": "eslint --color -c config/eslint/.eslintrc-server config/karma config/webpack",
     "builder:lint": "npm run builder:lint-server",
-    "builder:check": "npm run builder:lint",
-    "builder:prepublish": "node util/dev.js"
+    "builder:check": "npm run builder:lint"
   },
   "dependencies": {
     "babel": "^5.8.21",
@@ -66,6 +65,7 @@
     "webpack": "^1.11.0"
   },
   "devDependencies": {
+    "builder-support": "0.0.1",
     "eslint": "^1.10.1",
     "eslint-config-defaults": "^7.0.1",
     "eslint-plugin-filenames": "^0.1.2"
