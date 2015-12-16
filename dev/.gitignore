@@ -7,3 +7,11 @@ bower_components
 node_modules
 npm-debug\.log*
 phantomjsdriver\.log
+
+# Build
+dist
+*/dist
+build
+*/build
+coverage
+Procfile
