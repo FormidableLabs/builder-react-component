@@ -15,9 +15,28 @@ $ npm install --save builder-react-component
 $ npm install --save-dev builder-react-component-dev
 ```
 
+## Generator
+
+> **NOTE**: `builder-init` support is **not yet implemented**.
+> https://github.com/FormidableLabs/builder-init/issues/2
+
+To bootstrap a new project from scratch with template files from this
+archetype, you can use [builder-init][]:
+
+```sh
+$ npm install -g builder-init
+$ builder-init builder-react-component
+```
+
+This will download this archetype, prompt you for several template data values
+and inflate the [archetype templates](./init) to real files at a chosen
+directory.
+
 ## Project Structure
 
-This archetype assumes an architecture as follows:
+See the [development][] guide for workflows associated with this archetype.
+
+The archetype assumes a file structure like the following:
 
 ```
 demo/
@@ -38,6 +57,11 @@ test
 .builderrc
 package.json
 ```
+
+This matches the [`builder-init` templates](init) found in the source of this
+archetype.
+
+### File / Component Name
 
 The `name` field in `package.json` (the published `npm` package name) is
 assumed to be:
@@ -63,9 +87,6 @@ dist/my-cool-component.min.js.map
 ```
 
 and the exported class name is `MyCoolComponent`.
-
-An example project using this structure is:
-[formidable-react-component-boilerplate][]
 
 ## Usage Notes
 
@@ -203,6 +224,7 @@ Tasks:
 ```
 
 [builder]: https://github.com/FormidableLabs/builder
-[formidable-react-component-boilerplate]: https://github.com/FormidableLabs/formidable-react-component-boilerplate
+[builder-init]: https://github.com/FormidableLabs/builder-init
+[development]: ./DEVELOPMENT.md
 [trav_img]: https://api.travis-ci.org/FormidableLabs/builder-react-component.svg
 [trav_site]: https://travis-ci.org/FormidableLabs/builder-react-component
