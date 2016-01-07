@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.1.4
+
+* Ensure webpack exits with status 1 on errors
+
 ## 0.1.3
 
 * Use to [`builder-support`](https://github.com/FormidableLabs/builder-support)
