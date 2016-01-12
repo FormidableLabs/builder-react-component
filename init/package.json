@@ -1,8 +1,8 @@
 {
   "name": "<%= packageName %>",
   "version": "0.0.1",
-  "description": "<%= packageDescription %>",
-  "main": "lib/index.js",
+  "description": "<%= packageDescription || packageName %>",
+  "main": "lib/index.js",<% if (packageGitHubOrg) { %>
   "repository": {
     "type": "git",
     "url": "https://github.com/<%= packageGitHubOrg %>/<%= packageName %>.git"
@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/<%= packageGitHubOrg %>/<%= packageName %>/issues"
   },
-  "homepage": "https://github.com/<%= packageGitHubOrg %>/<%= packageName %>",
+  "homepage": "https://github.com/<%= packageGitHubOrg %>/<%= packageName %>",<% } %>
   "scripts": {
     "postinstall": "builder run npm:postinstall",
     "preversion": "builder run npm:preversion",
