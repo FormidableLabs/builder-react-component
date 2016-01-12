@@ -15,16 +15,6 @@ module.exports = {
   // - an object of question objects (keyed by `name`)
   //
   prompts: {
-    licenseDate: {
-      message: "License date",
-      default: (new Date()).getFullYear().toString()
-    },
-    licenseOrg: {
-      message: "License organization (e.g., you or your company)",
-      validate: function (val) {
-        return !!val.trim() || "Must enter a license organization";
-      }
-    },
     // See: https://github.com/npm/validate-npm-package-name
     packageName: {
       message: "Package / GitHub project name (e.g., 'whiz-bang-component')",
@@ -40,6 +30,19 @@ module.exports = {
     },
     packageDescription: {
       message: "Package description"
+    },
+    licenseDate: {
+      message: "License date",
+      default: (new Date()).getFullYear().toString()
+    },
+    licenseOrg: {
+      message: "License organization (e.g., you or your company)",
+      default: function (data) {
+        return data.packageGitHubOrg;
+      },
+      validate: function (val) {
+        return !!val.trim() || "Must enter a license organization";
+      }
     }
   },
 
