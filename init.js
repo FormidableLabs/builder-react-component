@@ -7,6 +7,19 @@
  * for structuring this configuration file.
  */
 module.exports = {
+  // Destination directory to write files to.
+  //
+  // This field is deep merged and added _last_ to the prompts so that archetype
+  // authors can add `default` values or override the default message. You
+  // could further override the `validate` function, but we suggest using the
+  // existing default as it checks the directory does not already exist (which
+  // is enforced later in code).
+  destination: {
+    default: function (data) {
+      return data.packageName;
+    }
+  },
+
   // Prompts are Inquirer question objects.
   // https://github.com/SBoudrias/Inquirer.js#question
   //

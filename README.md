@@ -17,9 +17,6 @@ $ npm install --save-dev builder-react-component-dev
 
 ## Generator
 
-> **NOTE**: `builder-init` support is **not yet implemented**.
-> https://github.com/FormidableLabs/builder-init/issues/2
-
 To bootstrap a new project from scratch with template files from this
 archetype, you can use [builder-init][]:
 

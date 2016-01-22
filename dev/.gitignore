@@ -9,6 +9,7 @@ npm-debug\.log*
 phantomjsdriver\.log
 
 # Build
+\.builder-init-tmp
 dist
 */dist
 build
