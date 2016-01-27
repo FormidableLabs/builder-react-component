@@ -26,5 +26,26 @@ before_install:
   - 'if [ "$NPM_3" = true ]; then npm install -g npm@3; else true; fi'
 
 script:
+  # Check archetype.
   - npm --version
   - npm run builder:check
+
+  # Initialize a fresh project from templates
+  - npm install -g builder-init
+  - mkdir .builder-init-tmp
+  - cd .builder-init-tmp
+  - >-
+    builder-init $PWD/.. --prompts='{
+    "packageName":"whiz-bang",
+    "packageGitHubOrg":"Acme",
+    "packageDescription":"Whiz Bang",
+    "licenseDate":"2016",
+    "licenseOrg":"Acme",
+    "destination":"whiz-bang"}'
+
+  # Run initialized project's own CI
+  - cd whiz-bang
+  - npm install
+  - node_modules/.bin/builder run check-ci
+  - npm prune --production
+  - node_modules/.bin/builder run build
