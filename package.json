@@ -62,7 +62,7 @@
     "rimraf": "^2.4.0",
     "style-loader": "^0.12.4",
     "url-loader": "~0.5.5",
-    "webpack": "^1.11.0"
+    "webpack": "^1.12.12"
   },
   "devDependencies": {
     "builder-support": "0.0.1",
