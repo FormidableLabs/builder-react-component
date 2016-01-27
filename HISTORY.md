@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.2.0
+
+* Add `builder-init` support with `init.js` and `init` templates.
+
 ## 0.1.4
 
 * Ensure webpack exits with status 1 on errors
