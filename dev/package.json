@@ -38,6 +38,7 @@
     "phantomjs": "^1.9.18",
     "react-hot-loader": "^1.2.8",
     "sinon": "^1.16.1",
+    "webpack": "^1.12.12",
     "webpack-dev-server": "^1.10.0"
   },
   "devDependencies": {}
