@@ -32,6 +32,10 @@ script:
   - npm --version
   - npm run builder:check
 
+  # Create global link for the archetypes for our
+  - npm link
+  - cd dev && npm link && cd ..
+
   # Initialize a fresh project from templates
   - npm install -g builder-init
   - mkdir .builder-init-tmp
@@ -45,8 +49,9 @@ script:
     "licenseOrg":"Acme",
     "destination":"whiz-bang"}'
 
-  # Run initialized project's own CI
+  # Run initialized project's own CI with npm link'ed archetypes.
   - cd whiz-bang
+  - npm link builder-react-component builder-react-component-dev
   - npm install
   - node_modules/.bin/builder run check-ci
   - npm prune --production

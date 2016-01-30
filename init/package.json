@@ -19,11 +19,11 @@
     "test": "builder run npm:test"
   },
   "dependencies": {
-    "builder": "~2.2.0",
-    "builder-react-component": "^0.1.2"
+    "builder": "^2.5.0",
+    "builder-react-component": "<%= archetype.package.version ? '^' + archetype.package.version : '*' %>"
   },
   "devDependencies": {
-    "builder-react-component-dev": "^0.1.2",
+    "builder-react-component-dev": "<%= archetype.devPackage.version ? '^' + archetype.devPackage.version : '*' %>",
     "chai": "^3.2.0",
     "mocha": "^2.3.3",
     "react": "^0.14.0",
