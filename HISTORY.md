@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.3.0
+
+* Update dependencies and templates (to use `archetype` data field).
+
 ## 0.2.0
 
 * Add `builder-init` support with `init.js` and `init` templates.
