@@ -4,15 +4,13 @@ Development
 We use [builder][] and `npm` to control all aspects of development and
 publishing.
 
-As a preliminary matter, please update your shell to include
+As a preliminary matter so you can type `builder` instead of
+`./node_modules/.bin/builder` for all commands, please update your shell to include
 `./node_modules/.bin` in `PATH` like:
 
 ```sh
 export PATH="${PATH}:./node_modules/.bin"
 ```
-
-So you can type `builder` instead of `./node_modules/.bin/builder` for all
-commands.
 
 
 ## Build
