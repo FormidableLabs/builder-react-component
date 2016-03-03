@@ -9,7 +9,7 @@ As a preliminary matter so you can type `builder` instead of
 `./node_modules/.bin` in `PATH` like:
 
 ```sh
-$ export PATH="${PATH}:./node_modules/.bin"
+export PATH="${PATH}:./node_modules/.bin"
 ```
 
 
