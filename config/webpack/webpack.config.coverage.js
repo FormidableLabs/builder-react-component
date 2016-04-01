@@ -2,7 +2,8 @@
 /**
  * Webpack frontend test (w/ coverage) configuration.
  */
-var _ = require("lodash"); // devDependency
+var devRequire = require("builder-react-component-dev/require");
+var _ = devRequire("lodash"); // devDependency
 var testCfg = require("./webpack.config.test");
 
 module.exports = _.merge({}, testCfg, {
@@ -13,7 +14,7 @@ module.exports = _.merge({}, testCfg, {
       {
         test: /src\/.*\.jsx?$/,
         exclude: /(test|node_modules)\//,
-        loader: require.resolve("isparta-loader")
+        loader: devRequire.resolve("isparta-loader")
       }
     ]
   }

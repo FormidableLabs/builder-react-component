@@ -25,7 +25,7 @@ module.exports = function (config) {
     preprocessors: PREPROCESSORS,
     files: [
       // Sinon has issues with webpack. Do global include.
-      require.resolve("sinon/pkg/sinon"),
+      require("builder-react-component-dev/require").resolve("sinon/pkg/sinon"),
 
       // Test bundle (created via local webpack-dev-server in this config).
       MAIN_PATH
