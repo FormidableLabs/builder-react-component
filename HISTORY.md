@@ -1,6 +1,12 @@
 History
 =======
 
+## 0.3.1
+
+* Update to use "module pattern" for dev. dependencies.
+* Add eslint to `dev/` files.
+* Update recommended Builder `PATH` modifications verbiage.
+
 ## 0.3.0
 
 * Update dependencies and templates (to use `archetype` data field).
