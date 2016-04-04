@@ -1,7 +1,7 @@
 "use strict";
 
-var devRequire = require("builder-react-component-dev/require");
-var _ = devRequire("lodash");
+var archDevRequire = require("builder-react-component-dev/require");
+var _ = archDevRequire("lodash");
 var base = require("./webpack.config.dev");
 
 // Clone our own module object.
@@ -9,7 +9,7 @@ var mod = _.cloneDeep(base.module);
 var firstLoader = mod.loaders[0];
 
 // Update loaders array. First loader needs react-hot-loader.
-firstLoader.loaders = [devRequire.resolve("react-hot-loader")]
+firstLoader.loaders = [archDevRequire.resolve("react-hot-loader")]
   .concat(firstLoader.loader ? [firstLoader.loader] : [])
   .concat(firstLoader.loaders || []);
 
