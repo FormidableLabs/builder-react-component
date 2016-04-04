@@ -3,7 +3,7 @@
  * Webpack frontend test configuration.
  */
 var path = require("path");
-var _ = require("lodash"); // devDependency
+var _ = require("builder-react-component-dev/require")("lodash");
 var prodCfg = require("./webpack.config");
 
 // Replace with `__dirname` if using in project root.
