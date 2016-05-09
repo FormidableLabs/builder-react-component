@@ -22,6 +22,16 @@ var libName = libPath
     return second.toUpperCase();
   });
 
+// Stash the location of `<archetype-dev>/node_modules`
+//
+// A normal `require.resolve` looks at `package.json:main`. We instead want
+// just the _directory_ of the module. So use heuristic of finding dir of
+// package.json which **must** exist at a predictable location.
+var archetypeDevNodeModules = path.join(
+  path.dirname(require.resolve("builder-react-component-dev/package.json")),
+  "node_modules"
+);
+
 module.exports = {
   cache: true,
   entry: path.join(ROOT, "src/index.js"),
@@ -42,7 +52,11 @@ module.exports = {
     libraryTarget: "umd"
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ["", ".js", ".jsx"],
+    root: [archetypeDevNodeModules]
+  },
+  resolveLoader: {
+    root: [archetypeDevNodeModules]
   },
   module: {
     loaders: [
