@@ -1,9 +1,13 @@
 History
 =======
 
+## 0.3.2
+
+* Update frontend code with "module pattern" for dev. dependencies.
+
 ## 0.3.1
 
-* Update to use "module pattern" for dev. dependencies.
+* Update Node code with "module pattern" for dev. dependencies.
 * Add eslint to `dev/` files.
 * Update recommended Builder `PATH` modifications verbiage.
 
