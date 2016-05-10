@@ -1,9 +1,13 @@
 History
 =======
 
-## 0.3.2
+## 0.3.3
 
 * Update frontend code with "module pattern" for dev. dependencies.
+
+## 0.3.2
+
+* Publishing error. **Do not use**.
 
 ## 0.3.1
 
