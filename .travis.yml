@@ -32,9 +32,9 @@ script:
   - npm --version
   - npm run builder:check
 
-  # Create global link for the archetypes for our
-  - npm link
-  - cd dev && npm link && cd ..
+  # Create linked modules with _only_ prod dependencies (sometimes errors without).
+  - npm prune --production && npm link
+  - cd dev && npm prune --production && npm link && cd ..
 
   # Initialize a fresh project from templates
   - npm install -g builder-init

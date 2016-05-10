@@ -15,6 +15,7 @@
   "scripts": {},
   "dependencies": {
     "babel-eslint": "^4.1.6",
+    "chai": "^3.2.0",
     "eslint": "^1.10.1",
     "eslint-config-defaults": "^7.0.1",
     "eslint-plugin-filenames": "^0.1.2",
@@ -33,11 +34,12 @@
     "karma-spec-reporter": "0.0.20",
     "karma-webpack": "^1.7.0",
     "lodash": "^3.10.1",
-    "mocha": "^2.2.5",
+    "mocha": "^2.3.3",
     "opener": "^1.4.1",
     "phantomjs": "^1.9.18",
     "react-hot-loader": "^1.2.8",
-    "sinon": "^1.16.1",
+    "sinon": "^1.17.2",
+    "sinon-chai": "^2.8.0",
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.10.0"
   },
