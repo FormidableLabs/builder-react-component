@@ -23,14 +23,12 @@ module.exports = {
   cache: true,
   context: path.join(ROOT, "test/client"),
   entry: "./main",
-  externals: prodCfg.externals.concat([
-    {
-      "cheerio": "window",
-      "react/addons": true,
-      "react/lib/ExecutionEnvironment": true,
-      "react/lib/ReactContext": true
-    }
-  ]),
+  externals: {
+    "cheerio": "window",
+    "react/addons": true,
+    "react/lib/ExecutionEnvironment": true,
+    "react/lib/ReactContext": true
+  },
   output: {
     filename: "main.js",
     publicPath: "/assets/"
