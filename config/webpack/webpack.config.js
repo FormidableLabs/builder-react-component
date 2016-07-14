@@ -42,7 +42,7 @@ module.exports = {
     libraryTarget: "umd"
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ["", ".js", ".jsx", ".json"]
   },
   module: {
     loaders: [
@@ -53,6 +53,9 @@ module.exports = {
         // we are playing around with `NODE_PATH` in builder. Manually
         // resolve path.
         loader: require.resolve("babel-loader")
+      }, {
+        test: /\.json$/,
+        loader: require.resolve("json-loader")
       }, {
         test: /\.css$/,
         loader: require.resolve("style-loader") + "!" + require.resolve("css-loader")
