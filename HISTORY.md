@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.3.5
+
+* Fix sanity-check in `demo/index.html` to support React 15.
+
 ## 0.3.4
 
 * Add `json-loader` to support loading JSON files.
