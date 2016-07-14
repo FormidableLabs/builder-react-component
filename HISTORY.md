@@ -1,6 +1,11 @@
 History
 =======
 
+## 0.3.4
+
+* Add `json-loader` to support loading JSON files.
+* Update webpack test config `externals` to support Enzyme.
+
 ## 0.3.3
 
 * Update frontend code with "module pattern" for dev. dependencies.
