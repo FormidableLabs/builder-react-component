@@ -42,7 +42,7 @@ For tagged official releases _only_, make sure to:
 ```sh
 $ vim HISTORY.md              # Version notes
 $ vim package.json            # Bump version
-$ builder-support gen-dev     # Generate `dev/*` files
+$ builder-support gen-dev     # Generate `../builder-react-component-dev/` files
 $ npm run builder:check       # Last check!
 $ git add package.json dev HISTORY.md
 $ git commit -m "Version bump"
