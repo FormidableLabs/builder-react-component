@@ -1,4 +1,17 @@
 {
-  "stage": 0,
-  "nonStandard": true
+  "presets": ["react"],
+  "plugins": [
+    "transform-class-properties",
+    "transform-es2015-classes"
+  ],
+  "env": {
+    "commonjs": {
+      "plugins": [
+        ["transform-es2015-modules-commonjs", {
+          "strict": false,
+          "allowTopLevelThis": true
+        }]
+      ]
+    }
+  }
 }

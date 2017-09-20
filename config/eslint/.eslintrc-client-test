@@ -1,6 +1,6 @@
 ---
 extends:
-  - "defaults/configurations/walmart/es6-react"
+  - "formidable/configurations/es6-react"
   - ".eslintrc-base"
 
 env:
