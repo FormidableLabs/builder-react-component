@@ -18,19 +18,19 @@ module.exports = {
   cache: true,
   devtool: "source-map",
   entry: {
-    app: ["./demo/app.jsx"]
+    app: ["./demo/app.js"]
   },
   stats: {
     colors: true,
     reasons: true
   },
   resolve: {
-    extensions: ["", ".js", ".jsx", ".json"]
+    extensions: ["", ".js", ".json"]
   },
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: [/node_modules/],
         // **Note**: Cannot use shorthand `"babel-loader"` or `"babel"` when
         // we are playing around with `NODE_PATH` in builder. Manually

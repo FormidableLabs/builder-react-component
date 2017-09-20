@@ -12,7 +12,7 @@ module.exports = _.merge({}, testCfg, {
       // Manually instrument client code for code coverage.
       // https://github.com/deepsweet/isparta-loader handles ES6 + normal JS.
       {
-        test: /src\/.*\.jsx?$/,
+        test: /src\/.*\.js$/,
         exclude: /(test|node_modules)\//,
         loader: archDevRequire.resolve("isparta-loader")
       }

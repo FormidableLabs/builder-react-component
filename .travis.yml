@@ -1,10 +1,9 @@
 language: node_js
 
 node_js:
-  - "0.10"
-  - "0.12"
-  - "4.2"
-  - "5.0"
+  - "4"
+  - "6"
+  - "8"
 
 # Use container-based Travis infrastructure.
 sudo: false
@@ -13,31 +12,22 @@ branches:
   only:
     - master
 
-env:
-  matrix:
-    - NPM_2=true
-    - NPM_3=true
-
 before_install:
   # GUI for real browsers.
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
-  # Choose either 2 or 3 explicitly.
-  - 'if [ "$NPM_2" = true ]; then npm install -g npm@2; else true; fi'
-  - 'if [ "$NPM_3" = true ]; then npm install -g npm@3; else true; fi'
-
 script:
   # Check archetype.
-  - npm --version
-  - npm run builder:check
+  - yarn --version
+  - yarn run builder:check
 
   # Create linked modules with _only_ prod dependencies (sometimes errors without).
-  - npm prune --production && npm link
-  - cd dev && npm prune --production && npm link && cd ..
+  - yarn prune --production && yarn link
+  - cd dev && yarn prune --production && yarn link && cd ..
 
   # Initialize a fresh project from templates
-  - npm install -g builder-init
+  - yarn install -g builder-init
   - mkdir .builder-init-tmp
   - cd .builder-init-tmp
   - >-
@@ -51,8 +41,9 @@ script:
 
   # Run initialized project's own CI with npm link'ed archetypes.
   - cd whiz-bang
-  - npm link builder-react-component builder-react-component-dev
-  - npm install
-  - node_modules/.bin/builder run check-ci
-  - npm prune --production
+  - yarn link builder-react-component
+  - yarn install
   - node_modules/.bin/builder run build
+  # TODO: Install dev archetype and run checks.
+  #- yarn link builder-react-component-dev
+  #- node_modules/.bin/builder run check-ci

@@ -20,7 +20,7 @@ module.exports = _.merge({}, _.omit(base, "entry", "module"), {
   entry: {
     app: [
       require.resolve("webpack/hot/dev-server"),
-      "./demo/app.jsx"
+      "./demo/app.js"
     ]
   },
 
