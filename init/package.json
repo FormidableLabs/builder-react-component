@@ -20,9 +20,17 @@
   },
   "dependencies": {
     "builder": "^3.2.2",
-    "builder-react-component": "<%= archetype.package.version ? '^' + archetype.package.version : '*' %>"
+    <% /* TODO REENABLE "builder-react-component": "< %= archetype.package.version ? '^' + archetype.package.version : '*' % >" */ %>
+    "builder-react-component": "file:///Users/rye/scm/fmd/builder-react-component"
   },
   "devDependencies": {
-    "builder-react-component-dev": "<%= archetype.devPackage.version ? '^' + archetype.devPackage.version : '*' %>"
+    <% /* TODO REENABLE "builder-react-component-dev": "< %= archetype.package.version ? '^' + archetype.package.version : '*' % >" */ %>
+    "builder-react-component-dev": "file:///Users/rye/scm/fmd/builder-react-component-dev",
+    "enzyme": "^2.9.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-addons-test-utils": "^15.6.0",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1"
   }
 }
