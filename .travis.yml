@@ -18,16 +18,13 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 script:
-  # Check archetype.
+  # Check archetype with yarn.
   - yarn --version
   - yarn run builder:check
 
-  # Create linked modules with _only_ prod dependencies (sometimes errors without).
-  - yarn prune --production && yarn link
-  - cd dev && yarn prune --production && yarn link && cd ..
-
-  # Initialize a fresh project from templates
-  - yarn install -g builder-init
+  # Initialize a fresh project from templates using npm.
+  - npm install -g builder-init
+  - npm link
   - mkdir .builder-init-tmp
   - cd .builder-init-tmp
   - >-
@@ -39,11 +36,11 @@ script:
     "licenseOrg":"Acme",
     "destination":"whiz-bang"}'
 
-  # Run initialized project's own CI with npm link'ed archetypes.
+  # Run initialized project's own CI with npm link'ed prod archetype.
+  # **Note**: The _dev_ archetype should be separately published and pinned first.
   - cd whiz-bang
-  - yarn link builder-react-component
-  - yarn install
+  - npm link builder-react-component
+  - npm install
   - node_modules/.bin/builder run build
-  # TODO: Install dev archetype and run checks.
-  #- yarn link builder-react-component-dev
-  #- node_modules/.bin/builder run check-ci
+  - npm prune --production
+  - node_modules/.bin/builder run check-ci
