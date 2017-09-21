@@ -170,9 +170,8 @@ sure that you have a very modern `npm` binary:
 $ npm install -g npm
 ```
 
-Built files in `dist/` should **not** be committeed during development or PRs.
-Instead we _only_ build and commit them for published, tagged releases. So
-the basic workflow is:
+Built files in `dist/`, `lib/`, and `es/` should **not** be committed. Instead
+we _only_ build them for published, tagged releases. So the basic workflow is:
 
 ```sh
 # Make sure you have a clean, up-to-date `master`
