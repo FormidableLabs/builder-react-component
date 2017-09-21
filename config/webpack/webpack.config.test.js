@@ -6,9 +6,6 @@ var path = require("path");
 var _ = require("builder-react-component-dev/require")("lodash");
 var prodCfg = require("./webpack.config");
 
-// Replace with `__dirname` if using in project root.
-var ROOT = process.cwd();
-
 // Stash the location of `<archetype-dev>/node_modules`
 //
 // A normal `require.resolve` looks at `package.json:main`. We instead want
@@ -21,7 +18,7 @@ var archetypeDevNodeModules = path.join(
 
 module.exports = {
   cache: true,
-  context: path.join(ROOT, "test/client"),
+  context: path.resolve("test/client"),
   entry: "./main",
   externals: {
     "cheerio": "window",
@@ -36,7 +33,7 @@ module.exports = {
   resolve: _.merge({}, prodCfg.resolve, {
     alias: {
       // Allow root import of `src/FOO` from ROOT/src.
-      src: path.join(ROOT, "src")
+      src: path.resolve("src")
     },
     root: [archetypeDevNodeModules]
   }),

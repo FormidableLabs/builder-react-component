@@ -3,15 +3,16 @@
 var path = require("path");
 var webpack = require("webpack");
 
-// Replace with `__dirname` if using in project root.
-var ROOT = process.cwd();
+var SRC = path.resolve("src");
+var TEST = path.resolve("test");
+var DEMO = path.resolve("demo");
 
 // **Little Hacky**: Infer the filename and library name from the package name.
 //
 // Assumptions:
 // - `package.json`'s `name` field is name of dist files.
 // - PascalCased version of that name is exported class name.
-var PKG = require(path.join(ROOT, "package.json"));
+var PKG = require(path.resolve("package.json"));
 var libPath = (PKG.name || "").toLowerCase();
 if (!libPath) { throw new Error("Need package.json:name field"); }
 // PascalCase (with first character capitalized).
@@ -24,7 +25,8 @@ var libName = libPath
 
 module.exports = {
   cache: true,
-  entry: path.join(ROOT, "src/index.js"),
+  context: SRC,
+  entry: "./index",
   externals: [
     {
       "react": {
@@ -33,25 +35,27 @@ module.exports = {
         commonjs: "react",
         amd: "react"
       }
+    },
+    {
+      "prop-types": {
+        root: "PropTypes",
+        commonjs2: "prop-types",
+        commonjs: "prop-types",
+        amd: "prop-types"
+      }
     }
   ],
   output: {
-    path: path.join(ROOT, "dist"),
+    path: path.resolve("dist"),
     filename: libPath + ".min.js",
     library: libName,
     libraryTarget: "umd"
   },
-  resolve: {
-    extensions: ["", ".js", ".json"]
-  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        exclude: [/node_modules/],
-        // **Note**: Cannot use shorthand `"babel-loader"` or `"babel"` when
-        // we are playing around with `NODE_PATH` in builder. Manually
-        // resolve path.
+        include: [SRC, TEST, DEMO],
         loader: require.resolve("babel-loader")
       }, {
         test: /\.json$/,
@@ -66,8 +70,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         warnings: false
       }
@@ -77,6 +81,8 @@ module.exports = {
       // is in condtionals like: `if (process.env.NODE_ENV === "production")`
       "process.env.NODE_ENV": JSON.stringify("production")
     }),
-    new webpack.SourceMapDevToolPlugin("[file].map")
+    new webpack.SourceMapDevToolPlugin({
+      filename: "[file].map"
+    })
   ]
 };

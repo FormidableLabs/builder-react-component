@@ -14,7 +14,7 @@ module.exports = _.merge({}, testCfg, {
       {
         test: /src\/.*\.js$/,
         exclude: /(test|node_modules)\//,
-        loader: archDevRequire.resolve("isparta-loader")
+        loader: archDevRequire.resolve("istanbul-instrumenter-loader")
       }
     ]
   }

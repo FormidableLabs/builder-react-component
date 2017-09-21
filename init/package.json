@@ -19,13 +19,10 @@
     "test": "builder run npm:test"
   },
   "dependencies": {
-    "builder": "^2.5.0",
+    "builder": "^3.2.2",
     "builder-react-component": "<%= archetype.package.version ? '^' + archetype.package.version : '*' %>"
   },
   "devDependencies": {
-    "builder-react-component-dev": "<%= archetype.devPackage.version ? '^' + archetype.devPackage.version : '*' %>",
-    "react": "^0.14.0",
-    "react-addons-test-utils": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "builder-react-component-dev": "<%= archetype.devPackage.version ? '^' + archetype.devPackage.version : '*' %>"
   }
 }
