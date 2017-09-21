@@ -4,6 +4,7 @@
  *
  * This configuration is the same as basic one-shot version, just with coverage.
  */
+var path = require("path");
 var webpackCovCfg = require("../webpack/webpack.config.coverage");
 
 module.exports = function (config) {
@@ -13,9 +14,11 @@ module.exports = function (config) {
     reporters: ["spec", "coverage-istanbul"],
     webpack: webpackCovCfg,
     coverageIstanbulReporter: {
-      reports: [
-        "text-summary" // TODO: MORE REPORTS
-      ],
+      reports: ["json", "lcov", "text-summary"],
+      "report-config": {
+        json: { file: "coverage.json" }
+      },
+      dir: path.resolve("coverage/client"),
       fixWebpackSourcePaths: true
     }
   });
