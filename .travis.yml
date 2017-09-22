@@ -41,6 +41,6 @@ script:
   - cd whiz-bang
   - npm link builder-react-component
   - npm install
-  - node_modules/.bin/builder run build
-  - npm prune --production
   - node_modules/.bin/builder run check-ci
+  - npm prune --production
+  - node_modules/.bin/builder run build
