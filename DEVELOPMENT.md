@@ -170,8 +170,27 @@ sure that you have a very modern `npm` binary:
 $ npm install -g npm
 ```
 
-Built files in `dist/`, `lib/`, and `es/` should **not** be committed. Instead
-we _only_ build them for published, tagged releases. So the basic workflow is:
+We use [`publishr`][publishr] to create an optimized `npm`-friendly package for
+the registry. Basically, this means that _different_ things happen for folks who
+take a `git` dependency on a project using this archetype:
+
+```js
+"radon-typeahead": "FormidableLabs/radon-typeahead"
+```
+
+(In this case, `dist/`, `es/`, and `lib/` are built during a `postinstall`
+step.)
+
+vs. a real `npm` registry dependency:
+
+```js
+"radon-typeahead": "^1.2.3"
+```
+
+(In this case, `dist/`, `es/`, and `lib/` are part of the downloaded package
+from the registry and there are no `postinstall` steps.)
+
+The publishing workflow to support this is as follows:
 
 ```sh
 # Make sure you have a clean, up-to-date `master`
@@ -182,20 +201,20 @@ $ git status # (should be no changes)
 # If you're unsure, read about semantic versioning at http://semver.org/
 $ npm version major|minor|patch -m "Version %s - INSERT_REASONS"
 
-# ... the `dist/` and `lib/` directories are now built, `package.json` is
-# updated, and the appropriate files are committed to git (but unpushed).
-#
-# *Note*: `lib/` is uncommitted, but built and must be present to push to npm.
+# ... the `dist/`, `es/`, and `lib/` directories are now built.
+# `package.json`is updated and committed for the version, and then _further_
+# mutated by `publishr` for publishing in a "git dirty" manner to be unwound
+# later.
 
-# Check that everything looks good in last commit and push.
-$ git diff HEAD^ HEAD
-$ git push && git push --tags
-# ... the project is now pushed to GitHub and available to `bower`.
-
-# And finally publish to `npm`!
+# Publish to npm
+# This step also uses `publishr` to unwind the git dirty changes.
 $ npm publish
+
+# Push all of your git changes.
+$ git push && git push --tags
 ```
 
 And you've published!
 
 [builder]: https://github.com/FormidableLabs/builder
+[publishr]: https://github.com/FormidableLabs/publishr

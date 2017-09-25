@@ -16,6 +16,8 @@
     "postinstall": "builder run npm:postinstall",
     "preversion": "builder run npm:preversion",
     "version": "builder run npm:version",
+    "postversion": "builder run npm:postversion",
+    "postpublish": "builder run npm:postpublish",
     "test": "builder run npm:test"
   },
   "dependencies": {
