@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/FormidableLabs/builder-react-component",
   "scripts": {
-    "npm:postinstall": "builder run build",
+    "npm:postinstall": "builder run build --expand-archetype",
     "npm:preversion": "builder run check",
     "npm:version": "builder run clean && builder run build && git add -A dist",
     "npm:postversion": "publishr postversion -V",
