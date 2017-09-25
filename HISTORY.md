@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.4.2
+
+* Fix `es/` build to actually preserve `import`, `export`.
+
 ## 0.4.1
 
 * Upgrade `npm:version` to remove old `git` command. (Not correct with new
