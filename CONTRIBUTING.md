@@ -9,11 +9,11 @@ We have a three-way dependency scheme:
 
 * `package.json:dependencies`: Production dependencies for the archetype
   installed in a project.
-* `dev/package.json:dependencies`: Development dependencies for the archetype
-  installed in a project.
 * `package.json:devDependencies`: The development dependencies used _internally_
   for the this archetype during development (self tests, checks, etc.) that
   are **not** part of the overall archeype outside workflow.
+* `../builder-react-component-dev/package.json:dependencies`: Development
+  dependencies for the archetype installed in a project.
 
 ## Checks, Tests
 
@@ -36,18 +36,23 @@ For tagged official releases _only_, make sure to:
 
 1. Update appropriate `HISTORY.md` notes
 2. Bump `package.json` version
-3. Generate a new `ARCHETYPE-dev` `package.json`
+3. Generate a new `ARCHETYPE-dev` `package.json` at the **exact same version**
 4. Add to git, tag, and publish
 
 ```sh
 $ vim HISTORY.md              # Version notes
 $ vim package.json            # Bump version
-$ builder-support gen-dev     # Generate `dev/*` files
+$ builder-support gen-dev     # Generate `../builder-react-component-dev/` files
 $ npm run builder:check       # Last check!
-$ git add package.json dev HISTORY.md
+$ git add package.json HISTORY.md
 $ git commit -m "Version bump"
 $ git tag -a "vNUMBER" -m "Version NUMBER"
 $ git push && git push --tags
 $ npm publish                 # Publish main project
-$ cd dev && npm publish       # Publish dev project
+
+$ cd ../builder-react-component-dev
+$ git commit -m "Version bump"
+$ git tag -a "vNUMBER" -m "Version NUMBER"
+$ git push && git push --tags
+$ npm publish                 # Publish dev project
 ```

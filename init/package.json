@@ -16,16 +16,32 @@
     "postinstall": "builder run npm:postinstall",
     "preversion": "builder run npm:preversion",
     "version": "builder run npm:version",
+    "postversion": "builder run npm:postversion",
+    "postpublish": "builder run npm:postpublish",
     "test": "builder run npm:test"
   },
   "dependencies": {
-    "builder": "^2.5.0",
+    "builder": "^3.2.2",
     "builder-react-component": "<%= archetype.package.version ? '^' + archetype.package.version : '*' %>"
   },
   "devDependencies": {
-    "builder-react-component-dev": "<%= archetype.devPackage.version ? '^' + archetype.devPackage.version : '*' %>",
-    "react": "^0.14.0",
-    "react-addons-test-utils": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "builder-react-component-dev": "^0.4.0",
+    "enzyme": "^2.9.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-addons-test-utils": "^15.6.0",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1"
+  },
+  "publishr": {
+    "dependencies": [
+      "^builder"
+    ],
+    "files": {
+      ".npmignore": ".npmignore.publishr"
+    },
+    "scripts": {
+      "postinstall": ""
+    }
   }
 }

@@ -1,7 +1,7 @@
 /*global document:false*/
 import React from "react";
 import ReactDOM from "react-dom";
-import {<%= componentName %>} from "../src/index";
+import { <%= componentName %> } from "../src/index";
 
 class App extends React.Component {
   render() {

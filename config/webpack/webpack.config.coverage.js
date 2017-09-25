@@ -8,14 +8,16 @@ var testCfg = require("./webpack.config.test");
 
 module.exports = _.merge({}, testCfg, {
   module: {
-    preLoaders: [
-      // Manually instrument client code for code coverage.
-      // https://github.com/deepsweet/isparta-loader handles ES6 + normal JS.
+    rules: (testCfg.module.rules || []).concat([
       {
-        test: /src\/.*\.jsx?$/,
+        test: /src\/.*\.js$/,
         exclude: /(test|node_modules)\//,
-        loader: archDevRequire.resolve("isparta-loader")
+        use: {
+          loader: archDevRequire.resolve("istanbul-instrumenter-loader"),
+          options: { esModules: true }
+        },
+        enforce: "post"
       }
-    ]
+    ])
   }
 });

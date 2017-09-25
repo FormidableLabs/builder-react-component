@@ -1,4 +1,1 @@
-module.exports = {
-  <%= componentName %>:
-    require("./components/<%= componentPath %>")
-};
+export { <%= componentName %> } from "./components/<%= componentPath %>";

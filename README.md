@@ -37,18 +37,18 @@ The archetype assumes a file structure like the following:
 
 ```
 demo/
-  app.jsx
+  app.js
   index.html
 src
   components/
-    *.jsx
+    *.js
   index.js
 test
   client/
     spec/
       components/
-        *.jsx?
-      *.jsx?
+        *.js
+      *.js
     main.js
     test.html
 .builderrc
@@ -103,16 +103,34 @@ Usage:
 
 Actions:
 
-  help, run, concurrent, envs
+  run, concurrent, envs, help
 
 Flags: General
 
   --builderrc: Path to builder config file (default: `.builderrc`)
 
+  --help: Display help and exit
+
+  --version: Display version and exit
+
+  --quiet: Silence logging
+
+  --log-level: Level to log at (`info`, `warn`, `error`, `none`)
+
+  --env: JSON string of environment variables to add to process
+
+  --env-path: JSON file path of environment variables to add to process
+
 Tasks:
 
   npm:postinstall
-    [builder-react-component] cd lib || builder run build-lib
+    [builder-react-component] builder run build
+
+  npm:postpublish
+    [builder-react-component] publishr postpublish -V
+
+  npm:postversion
+    [builder-react-component] publishr postversion -V
 
   npm:preversion
     [builder-react-component] builder run check
@@ -124,19 +142,28 @@ Tasks:
     [builder-react-component] builder run clean && builder run build && git add -A dist
 
   build
-    [builder-react-component] builder run build-lib && builder run build-dist
+    [builder-react-component] builder run build-libs && builder run build-dist
+
+  build-babel
+    [builder-react-component] babel src --copy-files
 
   build-dist
     [builder-react-component] builder run clean-dist && builder run build-dist-min && builder run build-dist-dev
 
   build-dist-dev
-    [builder-react-component] webpack --config node_modules/builder-react-component/config/webpack/webpack.config.dev.js --colors
+    [builder-react-component] webpack --bail --config node_modules/builder-react-component/config/webpack/webpack.config.dev.js --colors
 
   build-dist-min
-    [builder-react-component] webpack --config node_modules/builder-react-component/config/webpack/webpack.config.js --colors
+    [builder-react-component] webpack --bail --config node_modules/builder-react-component/config/webpack/webpack.config.js --colors
+
+  build-es
+    [builder-react-component] builder run --env '{"BABEL_ENV":"es"}' build-babel -- -d es
 
   build-lib
-    [builder-react-component] builder run clean-lib && babel src -d lib --copy-files
+    [builder-react-component] builder run --env '{"BABEL_ENV":"commonjs"}' build-babel -- -d lib
+
+  build-libs
+    [builder-react-component] builder concurrent --queue=1 build-lib build-es
 
   check
     [builder-react-component] builder run lint && builder run test
@@ -151,13 +178,13 @@ Tasks:
     [builder-react-component] builder run lint && builder run test-dev
 
   clean
-    [builder-react-component] builder run clean-lib && builder run clean-dist
+    [builder-react-component] builder run clean-libs && builder run clean-dist
 
   clean-dist
     [builder-react-component] rimraf dist
 
-  clean-lib
-    [builder-react-component] rimraf lib
+  clean-libs
+    [builder-react-component] rimraf es lib
 
   dev
     [builder-react-component] builder concurrent server-dev server-test
@@ -169,10 +196,10 @@ Tasks:
     [builder-react-component] builder concurrent lint-server lint-client lint-client-test
 
   lint-client
-    [builder-react-component] eslint --color --ext .js,.jsx -c node_modules/builder-react-component/config/eslint/.eslintrc-client src demo/*.jsx
+    [builder-react-component] eslint --color -c node_modules/builder-react-component/config/eslint/.eslintrc-client src demo/*.js
 
   lint-client-test
-    [builder-react-component] eslint --color --ext .js,.jsx -c node_modules/builder-react-component/config/eslint/.eslintrc-client-test src test/client
+    [builder-react-component] eslint --color -c node_modules/builder-react-component/config/eslint/.eslintrc-client-test src test/client
 
   lint-server
     [builder-react-component] eslint --color -c node_modules/builder-react-component/config/eslint/.eslintrc-server *.js
@@ -218,6 +245,9 @@ Tasks:
 
   test-frontend-dev
     [builder-react-component] karma start node_modules/builder-react-component/config/karma/karma.conf.dev.js
+
+  version-dry-run
+    [builder-react-component] publishr dry-run -V
 ```
 
 [builder]: https://github.com/FormidableLabs/builder
