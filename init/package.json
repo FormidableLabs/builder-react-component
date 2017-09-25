@@ -34,5 +34,16 @@
     "react-addons-test-utils": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-test-renderer": "^15.6.1"
+  },
+  "publishr": {
+    "dependencies": [
+      "^builder"
+    ],
+    "files": {
+      ".npmignore": ".npmignore.publishr"
+    },
+    "scripts": {
+      "postinstall": ""
+    }
   }
 }
