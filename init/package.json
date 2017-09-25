@@ -22,8 +22,7 @@
   },
   "dependencies": {
     "builder": "^3.2.2",
-    <% /* TODO REENABLE "builder-react-component": "< %= archetype.package.version ? '^' + archetype.package.version : '*' % >" */ %>
-    "builder-react-component": "FormidableLabs/builder-react-component#chore/updates"
+    "builder-react-component": "<%= archetype.package.version ? '^' + archetype.package.version : '*' %>"
   },
   "devDependencies": {
     "builder-react-component-dev": "^0.4.0",
