@@ -15,7 +15,7 @@
   "scripts": {
     "npm:postinstall": "builder run build --expand-archetype",
     "npm:preversion": "builder run check",
-    "npm:version": "builder run clean && builder run build && git add -A dist",
+    "npm:version": "builder run clean && builder run build",
     "npm:postversion": "publishr postversion -V",
     "npm:postpublish": "publishr postpublish -V",
     "npm:test": "builder run test-frontend",

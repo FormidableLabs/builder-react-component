@@ -1,6 +1,11 @@
 History
 =======
 
+## 0.4.1
+
+* Upgrade `npm:version` to remove old `git` command. (Not correct with new
+  `publishr` workflow).
+
 ## 0.4.0
 
 * Update dependencies, templates to modern webpack, babel, eslint, etc.
