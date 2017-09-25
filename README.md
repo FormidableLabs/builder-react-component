@@ -223,7 +223,6 @@ Tasks:
     [builder-react-component] webpack-dev-server --port 3001 --config node_modules/builder-react-component/config/webpack/webpack.config.test.js --colors
 
   test
-    [ROOT] builder run npm:test
     [builder-react-component] builder run npm:test
 
   test-ci
