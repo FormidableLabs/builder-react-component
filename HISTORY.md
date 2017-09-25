@@ -1,6 +1,15 @@
 History
 =======
 
+## 0.4.0
+
+* Update dependencies, templates to modern webpack, babel, eslint, etc.
+* Add publishr support.
+* Upgrade Travis to modern yarn + node engines.
+* Switch to separate repo for `builder-react-component-dev`
+* Output new `es/` directory
+* Remove `.jsx` suffix.
+
 ## 0.3.5
 
 * Fix sanity-check in `demo/index.html` to support React 15.

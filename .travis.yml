@@ -50,11 +50,8 @@ script:
   - node_modules/.bin/builder run check-ci
   # Workaround for Travis and/or npm bug in pruning...
   # ```
-  # The command "node_modules/.bin/builder run check-ci" exited with 0.
-  # 6.26s$ npm prune --production
+  # $ npm prune --production
   # npm ERR! May not delete: /home/travis/build/FormidableLabs/builder-react-component/.builder-init-tmp/whiz-bang/node_modules/.bin
-  # npm ERR! A complete log of this run can be found in:
-  # npm ERR!     /home/travis/.npm/_logs/2017-09-22T22_43_53_627Z-debug.log
   # ```
   - npm prune --production || echo "Pruning failed. Continuing..."
   - node_modules/.bin/builder run build
