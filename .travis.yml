@@ -40,13 +40,21 @@ script:
   # **Note**: The _dev_ archetype should be separately published and pinned first.
   - cd whiz-bang
   - npm link builder-react-component
-  - npm install
+  # Bug:
+  # ```
+  # npm ERR! /home/travis/build/FormidableLabs/builder-react-component/node_modules/fsevents/node_modules/abbrev is not a child of /home/travis/build/FormidableLabs/builder-react-component/.builder-init-tmp/whiz-bang
+  # ```
+  # - https://github.com/npm/npm/issues/18233
+  # - https://github.com/npm/npm/issues/17637
+  - npm install --no-optional
   - node_modules/.bin/builder run check-ci
   # Workaround for Travis and/or npm bug in pruning...
+  # ```
   # The command "node_modules/.bin/builder run check-ci" exited with 0.
   # 6.26s$ npm prune --production
   # npm ERR! May not delete: /home/travis/build/FormidableLabs/builder-react-component/.builder-init-tmp/whiz-bang/node_modules/.bin
   # npm ERR! A complete log of this run can be found in:
   # npm ERR!     /home/travis/.npm/_logs/2017-09-22T22_43_53_627Z-debug.log
+  # ```
   - npm prune --production || echo "Pruning failed. Continuing..."
   - node_modules/.bin/builder run build
