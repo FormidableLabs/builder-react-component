@@ -26,8 +26,7 @@
     "builder-react-component": "FormidableLabs/builder-react-component#chore/updates"
   },
   "devDependencies": {
-    <% /* TODO REENABLE "builder-react-component-dev": "< %= archetype.package.version ? '^' + archetype.package.version : '*' % >" */ %>
-    "builder-react-component-dev": "FormidableLabs/builder-react-component-dev#chore/updates",
+    "builder-react-component-dev": "^0.4.0",
     "enzyme": "^2.9.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
