@@ -2,7 +2,9 @@
   "name": "<%= packageName %>",
   "version": "0.0.1",
   "description": "<%= packageDescription || packageName %>",
-  "main": "lib/index.js",<% if (packageGitHubOrg) { %>
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",<% if (packageGitHubOrg) { %>
   "repository": {
     "type": "git",
     "url": "https://github.com/<%= packageGitHubOrg %>/<%= packageName %>.git"

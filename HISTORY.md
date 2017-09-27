@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.4.3
+
+* Add `module`, `jsnext:main` to `init/package.json` for proper ES support.
+
 ## 0.4.2
 
 * Fix `es/` build to actually preserve `import`, `export`.
