@@ -1,6 +1,11 @@
 History
 =======
 
+## 0.4.4
+
+* Make `--env` strings windows-compliant.
+  [#44](https://github.com/FormidableLabs/builder-react-component/issues/44)
+
 ## 0.4.3
 
 * Add `module`, `jsnext:main` to `init/package.json` for proper ES support.
